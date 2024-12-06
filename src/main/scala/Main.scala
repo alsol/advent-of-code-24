@@ -13,8 +13,15 @@ object Main {
 
     val (star1, star2) = problem.solve(input(_.getLines().toList))
 
-    println(s"⭐ 1: ${star1()}")
-    println(s"⭐ 2: ${star2()}")
+    println(s"⭐ 1: ${withTiming(star1)()}")
+    println(s"⭐ 2: ${withTiming(star2)()}")
+  }
+
+  private def withTiming[A](f: () => A): () => String = () => {
+    val start = System.currentTimeMillis()
+    val result = f()
+    val end = System.currentTimeMillis()
+    s"$result (took ${end - start}ms)"
   }
 
   private def currentDay: String = s"Day${LocalDate.now.getDayOfMonth}"
