@@ -56,7 +56,6 @@ generateTaskRegistry := {
        |
        |import advent.days.*
        |import advent.Task
-       |import java.time.LocalDate
        |
        |object TaskRegistry {
        |  val tasks: Map[String, Task] = Map(
