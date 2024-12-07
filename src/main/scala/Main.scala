@@ -13,6 +13,8 @@ object Main {
 
     val (star1, star2) = problem.solve(input(_.getLines().toList))
 
+    println(s"$day:")
+
     println(s"⭐ 1: ${withTiming(star1)()}")
     println(s"⭐ 2: ${withTiming(star2)()}")
   }
