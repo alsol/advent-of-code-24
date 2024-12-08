@@ -17,9 +17,9 @@ object Day8 extends Task {
     val width = input.size
 
     val star1 = (l: Point, r: Point) => Seq(l + (l - r))
-    val star2 = (l: Point, r: Point) => (-width to width).map(n => l + (l - r) * n)
+    val star2 = (l: Point, r: Point) => (0 to width).map(n => l + (l - r) * n)
 
-    val answer = (f: (Point, Point) => Seq[Point]) => traverse(antennas)(f).toSet.intersect(allPoints).size
+    val answer = (f: (Point, Point) => Seq[Point]) => traverse(antennas)(f).toSet.count(allPoints.contains)
 
     (
       () => answer(star1),
