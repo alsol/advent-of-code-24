@@ -1,18 +1,15 @@
 package advent.days
 
-import advent.common.Point
+import advent.common.{Grid, Point}
 import advent.{Solution, Task}
 
-import java.security.Guard
 import scala.annotation.tailrec
 import scala.collection.mutable
 
 object Day6 extends Task {
 
   override def solve(input: List[String]): (Solution, Solution) = {
-    val grid: Map[Point, State] = input.indices
-      .flatMap(y => input(y).indices.map(x => Point(x, y) -> initial(input(y)(x))))
-      .toMap
+    val grid: Map[Point, State] = Grid(input)(initial)
 
     val start: Point = grid.find((_, state) => state match {
       case State.Guard(_) => true

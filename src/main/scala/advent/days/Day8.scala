@@ -1,14 +1,12 @@
 package advent.days
 
-import advent.common.Point
+import advent.common.{Grid, Point}
 import advent.{Solution, Task}
 
 object Day8 extends Task {
 
   override def solve(input: List[String]): (Solution, Solution) = {
-    val grid = input.indices
-      .flatMap(y => input(y).indices.map(x => Point(x, y) -> input(y)(x)))
-      .toMap
+    val grid = Grid(input)(identity)
 
     val allPoints = grid.keySet
     val antennas = grid.filter((_, c) => c != '.')
